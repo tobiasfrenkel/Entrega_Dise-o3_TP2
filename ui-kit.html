@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Kit — Trastes Luthería</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   RESET + BASE
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── COLORES ── */
+  --ink:        #10100e;
+  --ink-60:     rgba(16,16,14,.6);
+  --ink-30:     rgba(16,16,14,.3);
+  --ink-12:     rgba(16,16,14,.12);
+  --paper:      #F6F1E6;
+  --paper-dark: #ede8de;
+  --white:      #ffffff;
+  --accent:     #ff5b00;
+  --accent-dark:#e04e00;
+
+  /* dark palette */
+  --dark-1:     #0e0b08;
+  --dark-2:     #1e160e;
+  --cedar:      #3d2a1a;
+  --walnut:     #7a5c38;
+  --mahogany:   #c4a882;
+  --cream:      #e8ddd0;
+
+  /* ── TIPOGRAFÍA ── */
+  --font-body:    'Inter', sans-serif;
+
+  /* ── BORDES ── */
+  --line:       rgba(16,16,14,.12);
+  --line-strong:rgba(16,16,14,.25);
+  --radius-sm:  2px;
+  --radius-md:  6px;
+  --radius-lg:  12px;
+
+  /* ── SPACING ── */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  16px;
+  --sp-lg:  24px;
+  --sp-xl:  40px;
+  --sp-2xl: 64px;
+}
+
+html { font-size: 16px; }
+
+body {
+  background: #f0ece3;
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   UI KIT LAYOUT
+============================================================ */
+
+.uikit {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px) 120px;
+}
+
+/* HEADER */
+.uikit-header {
+  padding: 60px 0 48px;
+  border-bottom: 1px solid var(--line-strong);
+  margin-bottom: 72px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.uikit-brand {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  letter-spacing: -.05em;
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+.uikit-brand span {
+  color: var(--accent);
+}
+
+.uikit-meta {
+  text-align: right;
+}
+
+.uikit-meta p {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  line-height: 1.8;
+}
+
+/* SECTION */
+.uikit-section {
+  margin-bottom: 80px;
+}
+
+.uikit-section-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.uikit-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* GRID HELPERS */
+.uikit-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.uikit-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.uikit-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.uikit-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.uikit-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* TOKEN CARD */
+.token-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.token-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--ink-60);
+  text-transform: uppercase;
+}
+
+.token-value {
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: var(--ink);
+}
+
+/* ============================================================
+   1. PALETA
+============================================================ */
+
+.swatch-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.swatch {
+  height: 72px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.swatch-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-60);
+}
+
+.swatch-hex {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--ink-30);
+}
+
+/* ============================================================
+   2. TIPOGRAFÍA
+============================================================ */
+
+.type-specimen {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+}
+
+.type-specimen + .type-specimen {
+  margin-top: 16px;
+}
+
+.type-meta {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+  margin-bottom: 12px;
+}
+
+.type-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.04em;
+}
+
+.type-display-xl em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.type-display-lg {
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+}
+
+.type-display-md {
+  font-family: var(--font-body);
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.type-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-60);
+  max-width: 56ch;
+}
+
+.type-small {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+
+.type-kicker {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+}
+
+.type-mono {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-60);
+}
+
+/* ============================================================
+   3. BOTONES
+============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+  border-radius: var(--radius-sm);
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+}
+.btn-primary:hover { background: var(--accent-dark); }
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--accent); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+.btn-ghost:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--ink);
+}
+.btn-white:hover { background: var(--accent); color: var(--white); }
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 10px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 13px;
+}
+
+/* ============================================================
+   4. KICKERS Y ETIQUETAS
+============================================================ */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.kicker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+}
+
+.tag-accent { background: var(--accent); color: var(--white); }
+.tag-dark   { background: var(--ink); color: var(--white); }
+.tag-outline { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+.tag-paper  { background: var(--paper-dark); color: var(--ink-60); }
+
+/* ============================================================
+   5. CARDS
+============================================================ */
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card-media {
+  aspect-ratio: 16/9;
+  background: var(--paper-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+
+.card-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+
+.card-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* card dark */
+.card-dark {
+  background: var(--ink);
+  color: var(--white);
+  border-color: transparent;
+}
+
+.card-dark .card-desc { color: rgba(255,255,255,.65); }
+.card-dark .card-footer { border-color: rgba(255,255,255,.12); }
+
+/* card number — estilo process */
+.card-number {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 3px solid var(--line-strong);
+  transition: border-top-color .3s ease, transform .3s ease;
+  cursor: pointer;
+}
+
+.card-number:hover {
+  border-top-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.card-number-num {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.card-number-title {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.card-number-text {
+  font-size: 12px;
+  color: var(--ink-60);
+  line-height: 1.45;
+}
+
+/* card stat */
+.card-stat {
+  border-top: 1px solid rgba(255,255,255,.5);
+  padding-top: 20px;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  color: white;
+}
+
+.card-stat-num {
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -.06em;
+  line-height: .85;
+  display: block;
+  margin-bottom: 14px;
+  transition: transform .4s ease;
+}
+
+.card-stat:hover .card-stat-num { transform: translateY(-6px); }
+
+.card-stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-stat-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.65);
+}
+
+/* ============================================================
+   6. INPUTS Y FORMULARIOS
+============================================================ */
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  border: 1.5px solid var(--line-strong);
+  background: var(--white);
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color .25s ease;
+}
+
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--ink-30); }
+
+.input-dark {
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+/* ============================================================
+   7. SEPARADORES Y LÍNEAS
+============================================================ */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+.divider-strong {
+  width: 100%;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.divider-accent {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.section-rule {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.kicker-bar {
+  width: 100%;
+  padding: 16px clamp(20px, 4vw, 70px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+/* ============================================================
+   8. NAV
+============================================================ */
+
+.nav-demo {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0 clamp(20px, 3vw, 40px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-60);
+  transition: color .2s ease;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+/* ============================================================
+   9. DARK SURFACE DEMO
+============================================================ */
+
+.dark-surface {
+  background: var(--dark-1);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(61,42,26,.6), transparent 65%);
+  pointer-events: none;
+}
+
+.dark-surface > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   10. ICONOGRAFÍA / FLECHAS
+============================================================ */
+
+.icon-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.icon-demo:hover {
+  background: var(--accent);
+  transform: scale(1.08);
+}
+
+.icon-demo:hover svg path { stroke: white; }
+
+/* ============================================================
+   11. FILMSTRIP MINI
+============================================================ */
+
+.filmstrip-demo {
+  display: flex;
+  height: 120px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.filmstrip-demo-item {
+  flex: 1;
+  background: var(--paper-dark);
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  cursor: pointer;
+  transition: flex .6s cubic-bezier(.16,1,.3,1), background .3s ease;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.filmstrip-demo-item:last-child { border-right: none; }
+
+.filmstrip-demo-item:hover,
+.filmstrip-demo-item.is-active {
+  flex: 3;
+  background: var(--cedar);
+  color: rgba(255,255,255,.8);
+}
+
+.filmstrip-demo-item:nth-child(2) { background: var(--walnut); }
+.filmstrip-demo-item:nth-child(3) { background: var(--cedar); }
+.filmstrip-demo-item:nth-child(4) { background: var(--dark-2); }
+
+</style>
+</head>
+<body>
+<div class="uikit">
+
+  <!-- HEADER -->
+  <div class="uikit-header">
+    <div>
+      <div class="uikit-brand">TRASTES<span>.</span></div>
+      <p style="margin-top:8px; font-size:13px; color:var(--ink-60);">UI Kit — Sistema de diseño</p>
+    </div>
+    <div class="uikit-meta">
+      <p>Inter </p>
+      <p>#ff5b00 · #F6F1E6 · #10100e</p>
+      <p>Luthería · Buenos Aires</p>
+    </div>
+  </div>
+
+  <!-- 1. PALETA -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">01 — Paleta de color</div>
+
+    <div style="margin-bottom:24px;">
+      <p class="type-kicker" style="margin-bottom:16px;">Tonos principales</p>
+      <div class="uikit-grid-4">
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#10100e;"></div>
+          <span class="swatch-label">Ink</span>
+          <span class="swatch-hex">#10100e</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#F6F1E6; border:1px solid var(--line);"></div>
+          <span class="swatch-label">Paper</span>
+          <span class="swatch-hex">#F6F1E6</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#ff5b00;"></div>
+          <span class="swatch-label">Accent</span>
+          <span class="swatch-hex">#ff5b00</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#e04e00;"></div>
+          <span class="swatch-label">Accent Dark</span>
+          <span class="swatch-hex">#e04e00</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <p class="type-kicker" style="margin-bottom:16px;">Paleta oscura — madera</p>
+      <div class="uikit-grid-4" style="grid-template-columns:repeat(6,1fr);">
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#0e0b08;"></div>
+          <span class="swatch-label">Negro taller</span>
+          <span class="swatch-hex">#0e0b08</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#1e160e;"></div>
+          <span class="swatch-label">Marrón sombra</span>
+          <span class="swatch-hex">#1e160e</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#3d2a1a;"></div>
+          <span class="swatch-label">Cedro</span>
+          <span class="swatch-hex">#3d2a1a</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#7a5c38;"></div>
+          <span class="swatch-label">Nogal</span>
+          <span class="swatch-hex">#7a5c38</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#c4a882;"></div>
+          <span class="swatch-label">Caoba</span>
+          <span class="swatch-hex">#c4a882</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#e8ddd0; border:1px solid var(--line);"></div>
+          <span class="swatch-label">Crema</span>
+          <span class="swatch-hex">#e8ddd0</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="type-kicker" style="margin-bottom:16px;">Opacidades del ink</p>
+      <div class="uikit-grid-4">
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:rgba(16,16,14,1);"></div>
+          <span class="swatch-label">Ink 100%</span>
+          <span class="swatch-hex">rgba(16,16,14,1)</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:rgba(16,16,14,.6);"></div>
+          <span class="swatch-label">Ink 60%</span>
+          <span class="swatch-hex">rgba(16,16,14,.6)</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:rgba(16,16,14,.3);"></div>
+          <span class="swatch-label">Ink 30%</span>
+          <span class="swatch-hex">rgba(16,16,14,.3)</span>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:rgba(16,16,14,.12); border:1px solid var(--line);"></div>
+          <span class="swatch-label">Ink 12% (--line)</span>
+          <span class="swatch-hex">rgba(16,16,14,.12)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TIPOGRAFÍA -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">02 — Tipografía</div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 900 — Títulos uppercase</p>
+      <div class="type-display-lg">CADA GUITARRA CUENTA UNA HISTORIA</div>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 900 — Subtítulos</p>
+      <div class="type-display-md">PROCESO DE CONSTRUCCIÓN</div>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 800 — Card title</p>
+      <div class="type-title">Selección de maderas</div>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 400 — Cuerpo de texto</p>
+      <p class="type-body">Desde la elección de los materiales hasta los ajustes finales, el objetivo es que desarrolles la capacidad de construir con autonomía. Cada instrumento nace de una madera elegida, de manos que conocen el sonido antes de que exista.</p>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 400 — Texto pequeño</p>
+      <p class="type-small">Formación 100% presencial en nuestro taller. Aprendé con un enfoque práctico, acompañado por luthiers profesionales.</p>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-meta">Inter 800 Uppercase — Kicker / Label</p>
+      <span class="type-kicker">Curso · Luthería · Buenos Aires</span>
+    </div>
+  </div>
+
+  <!-- 3. BOTONES -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">03 — Botones</div>
+
+    <div style="margin-bottom:20px;">
+      <p class="type-kicker" style="margin-bottom:14px;">Variantes</p>
+      <div class="uikit-row">
+        <button class="btn btn-primary">Inscribirse al curso</button>
+        <button class="btn btn-dark">Comprar curso</button>
+        <button class="btn btn-outline">Ver programa →</button>
+        <button class="btn btn-ghost">Conocer más →</button>
+        <button class="btn btn-white" style="border:1px solid var(--line);">Hablar con un luthier</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="type-kicker" style="margin-bottom:14px;">Tamaños</p>
+      <div class="uikit-row" style="align-items:center;">
+        <button class="btn btn-primary btn-sm">Pequeño</button>
+        <button class="btn btn-primary">Normal</button>
+        <button class="btn btn-primary btn-lg">Grande</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ETIQUETAS -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">04 — Kickers y etiquetas</div>
+
+    <div style="margin-bottom:20px;">
+      <p class="type-kicker" style="margin-bottom:14px;">Kickers</p>
+      <div class="uikit-col">
+        <div class="kicker">Acerca del curso</div>
+        <div class="kicker"><span class="kicker-dot"></span>Luthería artesanal · Buenos Aires</div>
+        <div class="kicker">Proceso de construcción <svg width="18" height="10" viewBox="0 0 22 12" fill="none" style="display:inline;vertical-align:middle;"><path d="M1 6H21M21 6L16 1M21 6L16 11" stroke="currentColor" stroke-width="1.4"/></svg></div>
+      </div>
+    </div>
+
+    <div>
+      <p class="type-kicker" style="margin-bottom:14px;">Tags</p>
+      <div class="uikit-row">
+        <span class="tag tag-dark">Presencial</span>
+        <span class="tag tag-outline">Instructor</span>
+        <span class="tag tag-paper">Luthería</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CARDS -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">05 — Cards</div>
+
+    <div class="uikit-grid-3" style="margin-bottom:24px;">
+
+      <div class="card">
+        <div class="card-media">
+          <div class="card-media-placeholder">Imagen del curso</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Acabados Artesanales</h3>
+          <p class="card-desc">Aprendé las técnicas de lijado, sellado y terminado aplicadas a instrumentos de cuerda.</p>
+        </div>
+        <div class="card-footer">
+          <strong style="font-size:22px;font-weight:900;">$75.000</strong>
+          <button class="btn btn-outline btn-sm">Ver programa →</button>
+        </div>
+      </div>
+
+      <div class="card card-dark">
+        <div class="card-media" style="background:var(--cedar);">
+          <div class="card-media-placeholder" style="color:rgba(255,255,255,.3);">Imagen del curso</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title" style="color:white;">Construcción Integral</h3>
+          <p class="card-desc">Construí tu propia guitarra desde cero.</p>
+        </div>
+        <div class="card-footer">
+          <strong style="font-size:22px;font-weight:900;color:white;">$220.000</strong>
+          <button class="btn btn-ghost btn-sm">Ver programa →</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" style="background:var(--paper-dark);">
+          <div class="card-media-placeholder">Imagen del curso</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Restauración</h3>
+          <p class="card-desc">Técnicas para la reparación y puesta en valor de instrumentos.</p>
+        </div>
+        <div class="card-footer">
+          <strong style="font-size:22px;font-weight:900;">$120.000</strong>
+          <button class="btn btn-outline btn-sm">Ver programa →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <p class="type-kicker" style="margin-bottom:14px;">Cards de proceso</p>
+      <div class="uikit-grid-3">
+        <div class="card-number">
+          <span class="card-number-num">01</span>
+          <h4 class="card-number-title">Selección de maderas</h4>
+          <p class="card-number-text">Corte / lectura</p>
+        </div>
+        <div class="card-number" style="border-top-color:var(--accent);">
+          <span class="card-number-num">02</span>
+          <h4 class="card-number-title">Diseño del cuerpo</h4>
+          <p class="card-number-text">Forma / escala</p>
+        </div>
+        <div class="card-number">
+          <span class="card-number-num">03</span>
+          <h4 class="card-number-title">Construcción base</h4>
+          <p class="card-number-text">Ensamble / estructura</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="type-kicker" style="margin-bottom:14px;">Cards de estadística — sobre dark</p>
+      <div style="background:var(--dark-1); padding:28px; border-radius:var(--radius-md);">
+        <div class="uikit-grid-4">
+          <div class="card-stat">
+            <strong class="card-stat-num">12</strong>
+            <span class="card-stat-label">Meses de formación</span>
+            <p class="card-stat-desc">Trabajás sobre procesos completos.</p>
+          </div>
+          <div class="card-stat">
+            <strong class="card-stat-num">1 a 1</strong>
+            <span class="card-stat-label">Seguimiento cercano</span>
+            <p class="card-stat-desc">Acompañamiento en todas las etapas.</p>
+          </div>
+          <div class="card-stat">
+            <strong class="card-stat-num">100%</strong>
+            <span class="card-stat-label">Práctica de taller</span>
+            <p class="card-stat-desc">Aprendés construyendo.</p>
+          </div>
+          <div class="card-stat">
+            <strong class="card-stat-num">∞</strong>
+            <span class="card-stat-label">Un oficio para siempre</span>
+            <p class="card-stat-desc">El criterio te acompaña siempre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FORMULARIOS -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">06 — Inputs</div>
+    <div class="uikit-grid-2">
+      <div class="uikit-col">
+        <div class="input-wrap">
+          <label class="input-label">Nombre</label>
+          <input class="input" type="text" placeholder="Tu nombre completo">
+        </div>
+        <div class="input-wrap">
+          <label class="input-label">Email</label>
+          <input class="input" type="email" placeholder="tu@mail.com">
+        </div>
+        <div class="input-wrap">
+          <label class="input-label">Mensaje</label>
+          <textarea class="input" rows="3" placeholder="Contanos qué sonido estás buscando..." style="resize:vertical;"></textarea>
+        </div>
+        <button class="btn btn-dark" style="align-self:flex-start;">Enviar →</button>
+      </div>
+      <div class="uikit-col">
+        <div style="background:var(--ink); padding:24px; border-radius:var(--radius-md);">
+          <div class="input-wrap">
+            <label class="input-label" style="color:rgba(255,255,255,.45);">Nombre</label>
+            <input class="input" type="text" placeholder="Tu nombre completo" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:white;">
+          </div>
+          <div class="input-wrap" style="margin-top:12px;">
+            <label class="input-label" style="color:rgba(255,255,255,.45);">Email</label>
+            <input class="input" type="email" placeholder="tu@mail.com" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:white;">
+          </div>
+          <button class="btn btn-primary" style="align-self:flex-start;margin-top:16px;">Enviar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. SEPARADORES -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">07 — Separadores y líneas</div>
+
+    <div class="uikit-col" style="gap:20px;">
+      <div>
+        <p class="type-kicker" style="margin-bottom:10px;">Line suave (--line)</p>
+        <div class="divider"></div>
+      </div>
+      <div>
+        <p class="type-kicker" style="margin-bottom:10px;">Line fuerte</p>
+        <div class="divider-strong"></div>
+      </div>
+      <div>
+        <p class="type-kicker" style="margin-bottom:10px;">Acento</p>
+        <div class="divider-accent"></div>
+      </div>
+      <div>
+        <p class="type-kicker" style="margin-bottom:10px;">Kicker bar (breadcrumb)</p>
+        <div class="kicker-bar">
+          Proceso de construcción
+          <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M1 6H21M21 6L16 1M21 6L16 11" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. NAVEGACIÓN -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">08 — Navegación</div>
+    <div class="nav-demo">
+      <span class="nav-logo">Trastes</span>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Nuestros cursos</a></li>
+          <li><a href="#">Recorrido</a></li>
+          <li><a href="#" style="color:var(--ink);">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- 9. ICONOGRAFÍA -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">09 — Iconografía y flechas</div>
+    <div class="uikit-row">
+      <button class="icon-demo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 14L14 4M14 4H6M14 4V12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="icon-demo" style="background:var(--ink);">
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
+          <path d="M1 6H21M21 6L16 1M21 6L16 11" stroke="white" stroke-width="1.4"/>
+        </svg>
+      </button>
+      <button class="icon-demo" style="background:var(--accent);">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 14L14 4M14 4H6M14 4V12" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div style="display:flex;align-items:center;gap:8px;padding:0 12px;">
+        <span class="type-kicker">— trazo estilo</span>
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M1 6H21M21 6L16 1M21 6L16 11" stroke="var(--ink)" stroke-width="1.4"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. FILMSTRIP MINI -->
+  <div class="uikit-section">
+    <div class="uikit-section-label">10 — Filmstrip / expandible</div>
+    <p class="type-small" style="margin-bottom:14px;">Hover para expandir. Patrón usado en about-course y galería.</p>
+    <div class="filmstrip-demo">
+      <div class="filmstrip-demo-item is-active">Comienzos</div>
+      <div class="filmstrip-demo-item" style="background:var(--walnut);">Proceso</div>
+      <div class="filmstrip-demo-item" style="background:var(--cedar);">Retoque</div>
+      <div class="filmstrip-demo-item" style="background:var(--dark-2);">Finalización</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Filmstrip interactivo
+document.querySelectorAll('.filmstrip-demo-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.filmstrip-demo-item').forEach(i => i.classList.remove('is-active'));
+    item.classList.add('is-active');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,871 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRASTES | Escuela de Lutheria</title>
+  <meta name="description" content="TRASTES es una escuela de lutheria premium para aprender a construir tu propia guitarra.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<div class="bg-grain" aria-hidden="true"></div>
+
+
+  <!-- Encabezado editorial fijo: marca minima, navegacion horizontal y lectura suiza. -->
+<header class="site-header" data-reveal>
+  <a class="brand" href="#inicio" aria-label="TRASTES inicio">
+    <img src="./assets/icons/TRASTES.png" alt="TRASTES">
+  </a>
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="main-nav" aria-label="Secciones principales">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-nosotros">Sobre nosotros</a>
+    <a href="#cursos">Nuestros cursos</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#recorrido">Recorrido</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+  <main id="inicio">
+    <!-- 1. Hero editorial: respeta el primer bloque del wireframe con titular gigante, bajada, CTA e imagen/video principal. -->
+    <section class="hero section-rule" aria-labelledby="hero-title">
+      <div class="eyebrow-row" data-reveal>
+        <span>Lutheria contemporanea / Hecha a mano / En Buenos Aires</span>
+      </div>
+      <div class="hero-title-wrap" data-reveal>
+       <h1 id="hero-title">
+
+    <div class="hero-line hero-line-1">
+        CONSTRUÍ TU PROPIA GUITARRA
+    </div>
+
+    <div class="hero-line hero-line-2">
+        & DEJÁ TU HUELLA EN TU INSTRUMENTO
+    </div>
+
+    <div class="hero-title-note">
+        Cursos y acompañamiento para que transformes materiales nobles en una guitarra única, construida con tus propias manos.
+    </div>
+
+</h1>
+      </div>
+      <div class="hero-mobile-version">
+
+  <div class="hero-m-line">CONSTRUÍ TU</div>
+  <div class="hero-m-line">PROPIA GUITARRA</div>
+  <div class="hero-m-line">&amp; DEJÁ TU HUELLA</div>
+  <div class="hero-m-line">EN TU INSTRUMENTO</div>
+
+  <div class="hero-m-note">
+    Cursos y acompañamiento para que transformes materiales nobles en una guitarra única, construida con tus propias manos.
+  </div>
+
+</div>
+      <figure class="hero-media" data-reveal>
+        <img src="./assets/images/hero-lutheria-placeholder.svg" >
+      </figure>
+    </section>
+
+<!-- 2. Sobre nosotros: bloque humano y artesanal con gran frase editorial. -->
+<section id="sobre-nosotros" class="about">
+    <div class="kicker">
+        <span>Sobre nosotros</span>
+        <img src="./assets/icons/flecha.svg" alt="">
+    </div>
+<!-- Título SOLO DESKTOP -->
+<div class="about-statement about-desktop">
+    <h2 class="statement">
+        <span class="statement-line">CADA GUITARRA CUENTA UNA HISTORIA </span>
+    </h2>
+</div>
+    <div class="about-copy">
+        <p>
+            En nuestro taller aprendés el oficio construyendo tu propio instrumento junto a luthiers profesionales.
+        </p>
+    </div>
+    <div class="about-gallery">
+        <div class="about-track">
+            <article class="about-card">
+                <div class="about-media">
+                    <img src="./assets/images/card-herramientas.jpg" alt="Herramientas">
+                    <div class="about-caption">
+                        <span class="caption-number">01</span>
+                        <h3>Herramientas</h3>
+                        <p>
+                            Precisión artesanal en cada detalle.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="about-card">
+                <div class="about-media">
+                    <img src="./assets/images/card-trabajo.jpg" alt="Trabajo manual">
+                    <div class="about-caption">
+                        <span class="caption-number">02</span>
+                        <h3>Trabajo manual</h3>
+                        <p>
+                            Cada guitarra comienza con paciencia.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="about-card">
+                <div class="about-media">
+                    <img src="./assets/images/card-taller.jpg" alt="Taller">
+                    <div class="about-caption">
+                        <span class="caption-number">03</span>
+                        <h3>Taller</h3>
+                        <p>
+                            El espacio donde nace el instrumento.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="about-card">
+                <div class="about-media">
+                    <img src="./assets/images/card-mesa.jpg" alt="Proceso">
+                    <div class="about-caption">
+                        <span class="caption-number">04</span>
+                        <h3>Proceso</h3>
+                        <p>
+                            Tiempo, precisión y oficio.
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 3. Cards de presentacion: introduccion al aprendizaje y metricas de confianza. -->
+<section class="intro-cards" aria-label="Presentacion de la escuela">
+
+    <div class="intro-video-bg">
+        <video class="intro-video"
+            muted autoplay playsinline loop preload="auto">
+            <source src="./assets/videos/fondo-impact2.mp4" type="video/mp4">
+        </video>
+        <div class="intro-video-overlay"></div>
+    </div>
+
+    <div class="intro-header">
+        <div class="intro-text" data-reveal>
+            <h2>
+                Aprender luthería
+                es dar forma al sonido.
+            </h2>
+            <p>
+                Transmitimos años de oficio, herramientas reales y procesos
+                que convierten la curiosidad en conocimiento aplicado.
+            </p>
+            <a class="btn btn-dark" href="#cursos">
+                Conocé nuestros cursos
+            </a>
+        </div>
+        <div class="intro-stats">
+            <article class="experience-card" data-reveal>
+                <strong>15+</strong>
+                <div>
+                    <h3>
+                        Años de experiencia
+                    </h3>
+                    <p>
+                        Formando personas y construyendo instrumentos
+                        con métodos artesanales.
+                    </p>
+                </div>
+            </article>
+            <article class="experience-card" data-reveal>
+                <strong>100%</strong>
+                <div>
+                    <h3>
+                        Práctica real
+                    </h3>
+                    <p>
+                        Aprendés trabajando directamente sobre materiales,
+                        herramientas e instrumentos.
+                    </p>
+                </div>
+            </article>
+            <article class="experience-card" data-reveal>
+                <strong>1 a 1</strong>
+                <div>
+                    <h3>
+                        Acompañamiento
+                    </h3>
+                    <p>
+                        Seguimiento personalizado durante todo el proceso.
+                    </p>
+                </div>
+            </article>
+            <article class="experience-card" data-reveal>
+                <strong>300+</strong>
+                <div>
+                    <h3>
+                        Alumnos
+                    </h3>
+                    <p>
+                        Personas que comenzaron desde cero y hoy crean.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Video ancho: pausa cinematográfica de taller + presentación del curso. -->
+<section class="wide-video">
+    <div class="video-shell">
+        <video class="video-placeholder"
+          muted autoplay playsinline loop preload="auto">
+          <source src="./assets/videos/Video-Luthier.mp4" type="video/mp4">
+        </video>
+        <div class="video-intro">
+            <h2>
+                CONSTRUÍ TU PROPIA GUITARRA.
+            </h2>
+            <a href="#cursos" class="video-btn">
+            Empezá tu recorrido
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- 5. Cursos con interaccion hover: tres programas con tarjetas verticales y estado activo. -->
+    <section id="cursos" class="courses section-pad">
+
+<div class="kicker">
+    <div class="kicker-inner">
+        <span>NUESTROS CURSOS</span>
+        <img src="./assets/icons/flecha.svg" alt="">
+    </div>
+</div>
+
+
+<div class="courses-container">
+
+  <!-- GRILLA CARDS -->
+  <div class="course-cards">
+
+    <!-- CARD 1 -->
+    <article class="course-card">
+
+      <!-- MEDIA -->
+      <div class="course-media">
+        <video class="course-video" muted loop playsinline>
+          <source src="./assets/videos/video-primeras-resonancias.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Reproducir video">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5.14v14l11-7-11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="course-body">
+
+        <h3 class="course-name">ACABADOS<br>ARTESANALES</h3>
+
+        <!-- META ICONOS -->
+        <div class="course-meta">
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            <div>
+              <span class="meta-label">DURACIÓN</span>
+              <span class="meta-value">4 meses</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 20h4v-6H4v6zM10 20h4V10h-4v10zM16 20h4V4h-4v16z"/>
+            </svg>
+            <div>
+              <span class="meta-label">NIVEL</span>
+              <span class="meta-value">Principiante</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <div>
+              <span class="meta-label">MODALIDAD</span>
+              <span class="meta-value">Presencial</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="course-desc">
+          Aprendé las técnicas de lijado, sellado y terminado aplicadas a instrumentos de cuerda.
+        </p>
+
+        <div class="course-footer">
+          <span class="course-price">$75.000</span>
+          <a class="course-cta" href="./custom-build.html">
+            VER PROGRAMA <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="course-card">
+
+      <div class="course-media">
+        <video class="course-video" muted loop playsinline>
+          <source src="./assets/videos/video-construccion-integral.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Reproducir video">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5.14v14l11-7-11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="course-body">
+
+        <h3 class="course-name">CONSTRUCCIÓN<br>INTEGRAL</h3>
+
+        <div class="course-meta">
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            <div>
+              <span class="meta-label">DURACIÓN</span>
+              <span class="meta-value">6 meses</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 20h4v-6H4v6zM10 20h4V10h-4v10zM16 20h4V4h-4v16z"/>
+            </svg>
+            <div>
+              <span class="meta-label">NIVEL</span>
+              <span class="meta-value">Intermedio</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <div>
+              <span class="meta-label">MODALIDAD</span>
+              <span class="meta-value">Presencial</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="course-desc">
+          Construí tu propia guitarra desde cero. Desde el diseño y la selección de maderas hasta el armado final.
+        </p>
+
+        <div class="course-footer">
+          <span class="course-price">$220.000</span>
+          <a class="course-cta" href="./custom-build.html">
+            VER PROGRAMA <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="course-card">
+
+      <div class="course-media">
+        <video class="course-video" muted loop playsinline>
+          <source src="./assets/videos/video-restauracion-instrumental.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Reproducir video">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5.14v14l11-7-11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="course-body">
+
+        <h3 class="course-name">RESTAURACIÓN<br>INSTRUMENTAL</h3>
+
+        <div class="course-meta">
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            <div>
+              <span class="meta-label">DURACIÓN</span>
+              <span class="meta-value">4 meses</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 20h4v-6H4v6zM10 20h4V10h-4v10zM16 20h4V4h-4v16z"/>
+            </svg>
+            <div>
+              <span class="meta-label">NIVEL</span>
+              <span class="meta-value">Intermedio</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <div>
+              <span class="meta-label">MODALIDAD</span>
+              <span class="meta-value">Presencial</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="course-desc">
+          Técnicas y criterios para la reparación y puesta en valor de cada uno de los instrumentos.
+        </p>
+
+        <div class="course-footer">
+          <span class="course-price">$120.000</span>
+          <a class="course-cta" href="./custom-build.html">
+            VER PROGRAMA <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+    <!-- 6. Seccion interactiva de partes de la guitarra: lista clickeable y detalle visual. -->
+<section id="componentes" class="guitar-parts section-pad">
+
+    <div class="kicker">
+        <div class="kicker-inner">
+            <span>Componentes</span>
+            <img src="./assets/icons/flecha.svg" alt="">
+        </div>
+    </div>
+
+        <div class="parts-container">
+
+    <div class="parts-head">
+
+        <h2 class="parts-title">
+            COMPONENTES PRINCIPALES DE UNA GUITARRA
+        </h2>
+
+        <p class="parts-subtitle">
+            Descubrí cómo cada pieza influye en el sonido, la respuesta y la personalidad del instrumento.
+        </p>
+
+    </div>
+
+    <div class="parts-grid">
+
+        <div class="parts-media" data-reveal>
+            <img id="parts-image"
+                 src="./assets/images/la-tapa-armonica.png"
+                 alt="La tapa armónica">
+        </div>
+
+        <div class="parts-copy">
+
+           <div class="part-block is-selected">
+  <button class="part-item" type="button" data-image="./assets/images/la-tapa-armonica.png">
+    La tapa armónica
+  </button>
+  <div class="part-description">
+    La tapa vibra, proyecta y define gran parte de la voz del instrumento.
+  </div>
+</div>
+
+<div class="part-block">
+  <button class="part-item" type="button" data-image="./assets/images/la-boca.png">
+    La boca
+  </button>
+  <div class="part-description">
+    La boca respira el sonido y revela el equilibrio entre volumen, cuerpo y respuesta.
+  </div>
+</div>
+
+<div class="part-block">
+  <button class="part-item" type="button" data-image="./assets/images/el-puente.png">
+    El puente
+  </button>
+  <div class="part-description">
+    Conecta las cuerdas con la madera y transmite cada vibración.
+  </div>
+</div>
+
+<div class="part-block">
+  <button class="part-item" type="button" data-image="./assets/images/el-mastil.png">
+    El mástil
+  </button>
+  <div class="part-description">
+    El mástil define comodidad, tensión y precisión en cada nota.
+  </div>
+</div>
+
+<div class="part-block">
+  <button class="part-item" type="button" data-image="./assets/images/la-cabeza.png">
+    La cabeza
+  </button>
+  <div class="part-description">
+    La cabeza aloja la afinación y completa la identidad visual del instrumento.
+  </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección 7 - Editorial -->
+
+<section class="editorial" id="editorial">
+
+  <div class="editorial-bg">
+    <video class="editorial-video" muted autoplay playsinline loop preload="auto">
+      <source src="./assets/videos/fondo-impact.mp4" type="video/mp4">
+    </video>
+    <div class="editorial-overlay"></div>
+    <div class="editorial-grain"></div>
+  </div>
+
+  <div class="editorial-container">
+
+    <!-- nivel 1 — kicker -->
+    <div class="editorial-kicker">
+      <span class="editorial-kicker-tag">LUTHERÍA CONTEMPORÁNEA</span>
+      <span class="editorial-kicker-rule"></span>
+      <span class="editorial-kicker-tag">HECHA A MANO EN BUENOS AIRES</span>
+    </div>
+
+    <!-- nivel 2 — titular -->
+    <h2 class="editorial-title">
+      <span class="editorial-line"><span>CONSTRUIDA PARA</span></span>
+      <span class="editorial-line"><span>DURAR TODA LA VIDA</span></span>
+    </h2>
+
+    <!-- nivel 3 — lede -->
+    <p class="editorial-lede">
+      Cada guitarra nace de una selección minuciosa de maderas y procesos
+      artesanales. No hay dos instrumentos iguales: cada uno lleva la marca
+      de quien lo construyó.
+    </p>
+
+    <!-- nivel 4 y 5 — declaraciones con hover-reveal -->
+    <div class="editorial-statements">
+
+      <article class="editorial-statement">
+        <div class="editorial-statement-head">
+          <strong class="editorial-statement-title">Selección de maderas</strong>
+          <span class="editorial-statement-icon" aria-hidden="true"></span>
+        </div>
+        <div class="editorial-statement-reveal">
+          <p class="editorial-statement-body">
+            Maderas elegidas por su estabilidad, resonancia y calidad estructural.
+          </p>
+        </div>
+      </article>
+
+      <article class="editorial-statement">
+        <div class="editorial-statement-head">
+          <strong class="editorial-statement-title">Construcción del mástil</strong>
+          <span class="editorial-statement-icon" aria-hidden="true"></span>
+        </div>
+        <div class="editorial-statement-reveal">
+          <p class="editorial-statement-body">
+            Aprendé a crear un mástil cómodo, resistente y preciso.
+          </p>
+        </div>
+      </article>
+
+      <article class="editorial-statement">
+        <div class="editorial-statement-head">
+          <strong class="editorial-statement-title">Calibración</strong>
+          <span class="editorial-statement-icon" aria-hidden="true"></span>
+        </div>
+        <div class="editorial-statement-reveal">
+          <p class="editorial-statement-body">
+            Ajustes que mejoran la afinación, comodidad y respuesta del instrumento.
+          </p>
+        </div>
+      </article>
+
+            <article class="editorial-statement">
+        <div class="editorial-statement-head">
+          <strong class="editorial-statement-title">Acabados</strong>
+          <span class="editorial-statement-icon" aria-hidden="true"></span>
+        </div>
+        <div class="editorial-statement-reveal">
+          <p class="editorial-statement-body">
+           Técnicas de lijado, tintes y protección para un resultado profesional.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Sección 8 - Materiales -->
+
+<section class="materials" id="materials">
+
+  <div class="kicker">
+    <div class="kicker-inner">
+      <span>Materiales</span>
+      <img src="./assets/icons/flecha.svg" alt="">
+    </div>
+  </div>
+
+  <div class="materials-header">
+    <h2 class="materials-title">Las maderas cumplen un propósito</h2>
+    <p class="materials-copy">
+      Tocá cada material para descubrir su rol dentro de la guitarra.
+    </p>
+  </div>
+
+  <div class="materials-grid">
+
+    <!-- CEDRO -->
+    <article class="materials-card">
+      <div class="materials-card-inner">
+        <div class="materials-front" style="background-image:url('./assets/images/madera-caoba.jpg')">
+          <span class="materials-index">01</span>
+          <div class="materials-front-content">
+            <h3>Caoba</h3>
+          </div>
+        </div>
+        <<div class="materials-back"
+     style="background-image:url('./assets/images/madera-caoba.jpg')">
+          <strong>MADERA PRINCIPAL</strong>
+          <h3>Cálido y resonante</h3>
+          <p>Su baja densidad permite una gran vibración y una excelente proyección sonora.</p>
+          <ul>
+            <li>Usada en la tapa armónica</li>
+            <li>Respuesta rápida al toque</li>
+          </ul>
+          <small>01 / CAOBA</small>
+        </div>
+      </div>
+    </article>
+
+    <!-- NOGAL -->
+    <article class="materials-card">
+      <div class="materials-card-inner">
+        <div class="materials-front" style="background-image:url('./assets/images/madera-fresno.jpg')">
+          <span class="materials-index">02</span>
+          <div class="materials-front-content">
+            <h3>Fresno</h3>
+          </div>
+        </div>
+        <<div class="materials-back"
+     style="background-image:url('./assets/images/madera-fresno.jpg')">
+          <strong>MADERA ESTRUCTURAL</strong>
+          <h3>Equilibrio natural</h3>
+          <p>Aporta cuerpo al sonido y un excelente equilibrio entre graves y agudos.</p>
+          <ul>
+            <li>Usada en aros y fondo</li>
+            <li>Buena densidad y peso</li>
+          </ul>
+          <small>02 / FRESNO</small>
+        </div>
+      </div>
+    </article>
+
+    <!-- MAPLE -->
+    <article class="materials-card">
+      <div class="materials-card-inner">
+        <div class="materials-front" style="background-image:url('./assets/images/madera-nogal.jpg')">
+          <span class="materials-index">03</span>
+          <div class="materials-front-content">
+            <h3>Nogal</h3>
+          </div>
+        </div>
+        <div class="materials-back"
+     style="background-image:url('./assets/images/madera-nogal.jpg')">
+          <strong>PRECISIÓN Y ESTABILIDAD</strong>
+          <h3>Precisión estructural</h3>
+          <p>Su rigidez mejora la estabilidad y transmite las vibraciones con precisión.</p>
+          <ul>
+            <li>Usada en mástil y clavijero</li>
+            <li>Alta resistencia a la torsión</li>
+          </ul>
+          <small>03 / NOGAL</small>
+        </div>
+      </div>
+    </article>
+
+    <!-- ÉBANO -->
+    <article class="materials-card">
+      <div class="materials-card-inner">
+        <div class="materials-front" style="background-image:url('./assets/images/madera-aliso.jpg')">
+          <span class="materials-index">04</span>
+          <div class="materials-front-content">
+            <h3>Aliso</h3>
+          </div>
+        </div>
+        <div class="materials-back"
+     style="background-image:url('./assets/images/madera-aliso.jpg')">
+          <strong>ACABADO PROFESIONAL</strong>
+          <h3>Dureza premium</h3>
+          <p>Su gran dureza soporta el desgaste constante y mejora la sensación al tocar.</p>
+          <ul>
+            <li>Usada en diapasón y puente</li>
+            <li>Superficie lisa y densa</li>
+          </ul>
+          <small>04 / ALISO</small>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- Sección 9 - Recorrido -->
+<section id="recorrido" class="gallery-marquee-section">
+    <div class="gallery-content">
+        <div class="kicker">
+            <div class="kicker-inner">
+                <span>Nuestro recorrido</span>
+                <img src="./assets/icons/flecha.svg" alt="">
+            </div>
+        </div>
+<div class="gallery-heading">
+
+    <h2 class="gallery-title">
+    EL RECORRIDO EN CADA GUITARRA
+    </h2>
+
+    <div class="gallery-subtitle">
+        <p>
+            Un proceso colectivo en el cual es construido con tiempo, precisión y oficio artesanal.
+        </p>
+    </div>
+
+</div>
+        </div>
+    </div>
+    <div class="gallery-marquee">
+        <div class="marquee-track images">
+            <img src="./assets/images/recorrido-5.png" alt="">
+            <img src="./assets/images/recorrido-2.png" alt="">
+            <img src="./assets/images/recorrido-3.png" alt="">
+            <img src="./assets/images/recorrido-1.png" alt="">
+            <img src="./assets/images/recorrido-4.png" alt="">
+            <img src="./assets/images/recorrido-6.png" alt="">
+            <img src="./assets/images/recorrido-7.png" alt="">
+            <img src="./assets/images/recorrido-9.png" alt="">
+            <img src="./assets/images/recorrido-8.png" alt="">
+            <img src="./assets/images/recorrido-10.png" alt="">
+        </div>
+    </div>
+</section>
+
+
+<!-- 11. Contacto y footer -->
+<footer id="contacto" class="site-footer">
+    <div class="footer-bg">
+        <video autoplay muted loop playsinline>
+            <source src="./assets/videos/fondo-footer.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <img src="./assets/icons/TRASTES.png" alt="TRASTES">
+            <p class="footer-tagline">
+                Cada guitarra comienza mucho antes del primer acorde.
+            </p>
+        </div>
+        <div class="footer-contact">
+            <span class="footer-label">
+                Contacto
+            </span>
+            <a href="mailto:hola@trastes.com">
+                hola@trastes.com
+            </a>
+            <a href="tel:+541155551801">
+                +54 11 5555 1801
+            </a>
+            <address>
+                Buenos Aires · Argentina
+            </address>
+        </div>
+        <div class="footer-links">
+    <span class="footer-label">
+        Explorar
+    </span>
+    <a href="#inicio">Inicio</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#recorrido">Recorrido</a>
+    <a href="#contacto">Contacto</a>
+    <a href="./ui-kit.html">UI Kit</a>
+</div>
+
+        <!-- UI KIT LINK -->
+<a href="./ui-kit.html" class="footer-uikit-btn">
+  <span class="footer-uikit-title">Ver UI Kit →</span>
+</a>
+
+    </div>
+
+    <div class="footer-form">
+        <span class="footer-label">
+            Iniciar contacto
+        </span>
+        <h2>
+            Hablemos de tu próximo instrumento.
+        </h2>
+        <form>
+            <div class="form-row">
+                <input 
+                type="text"
+                placeholder="Nombre">
+                <input 
+                type="email"
+                placeholder="Email">
+            </div>
+            <input 
+            type="text"
+            placeholder="Motivo de consulta">
+            <textarea 
+            placeholder="Contanos sobre tu proyecto"></textarea>
+            <button type="submit">
+                Enviar consulta ↗
+            </button>
+        </form>
+    </div>
+
+    <div class="footer-bottom">
+        <span>
+            © 2026 Trastes.
+        </span>
+        <span>
+            Diseño y luthería.
+        </span>
+        <span>
+            Buenos Aires.
+        </span>
+    </div>
+</footer>
+
+  <script src="./js/scripts.js"></script>
+</body>
+</html>
