@@ -35,6 +35,129 @@ HERO
     width:100%;
     height:100%;
     object-fit:cover;
+     transform:scale(1.12);
+    transition:
+        transform 1.8s cubic-bezier(.22,1,.36,1),
+        filter 1.2s ease;
+
+    will-change:transform;
+}
+
+.build-hero.is-visible .build-hero-frame img{
+    transform:scale(1);
+}
+
+.build-overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.15)
+    );
+
+    opacity:1;
+
+    transition:opacity 1.2s ease;
+}
+
+.build-hero.is-visible .build-overlay{
+
+    opacity:.45;
+
+}
+
+.build-kicker,
+.build-hero-main h1,
+.build-hero-lead,
+.build-course-info,
+.build-hero-strip-meta .btn{
+
+    opacity:0;
+    transform:translateY(30px);
+
+}
+
+.build-hero.is-visible .build-kicker{
+
+    opacity:1;
+    transform:none;
+    transition:.7s cubic-bezier(.22,1,.36,1);
+
+}
+
+.build-hero.is-visible h1{
+
+    opacity:1;
+    transform:none;
+
+    transition:
+        .8s cubic-bezier(.22,1,.36,1);
+
+    transition-delay:.12s;
+
+}
+
+.build-hero.is-visible .build-hero-lead{
+
+    opacity:1;
+    transform:none;
+
+    transition:
+        .8s cubic-bezier(.22,1,.36,1);
+
+    transition-delay:.24s;
+
+}
+
+.build-hero.is-visible .build-course-info{
+
+    opacity:1;
+    transform:none;
+
+    transition:
+        .8s cubic-bezier(.22,1,.36,1);
+
+    transition-delay:.34s;
+
+}
+
+.build-hero.is-visible .btn{
+
+    opacity:1;
+    transform:none;
+
+    transition:
+        .8s cubic-bezier(.22,1,.36,1);
+
+    transition-delay:.48s;
+
+}
+
+@keyframes heroBreathing{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.025);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.build-hero.is-visible .build-hero-frame img{
+
+    animation:
+        heroBreathing 12s ease-in-out infinite;
+
 }
 
 .build-noise{
@@ -55,7 +178,7 @@ HERO
 }
 
 .build-hero-strip{
-    min-height: clamp( 240px, ¿32vh, 420px );
+    min-height: clamp(240px, 32vh, 420px);
     display:grid;
     grid-template-columns:2fr .9fr;
     align-items:center;
@@ -368,24 +491,54 @@ HERO
   gap: 0;
 }
 
-/* KICKER */
-.about-course__kicker {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  opacity: .45;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .5s ease, transform .5s ease;
+.about-course__kicker{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:22px;
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+
+    opacity:0;
+    transform:translateY(24px);
 }
 
-.about-course.is-visible .about-course__kicker {
-  opacity: .45;
-  transform: translateY(0);
-  transition-delay: .1s;
+.about-course__kicker::after{
+
+    content:"";
+
+    flex:1;
+    height:1px;
+
+    background:var(--line);
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    transition:
+        transform .8s cubic-bezier(.22,1,.36,1);
+
+}
+
+.about-course.is-visible .about-course__kicker{
+
+    opacity:1;
+    transform:none;
+
+    transition:
+        .7s cubic-bezier(.22,1,.36,1);
+
+}
+
+.about-course.is-visible .about-course__kicker::after{
+
+    transform:scaleX(1);
+
 }
 
 /* TÍTULO */
@@ -509,6 +662,34 @@ margin-top:-.40em;
   height: clamp(440px, 40vw, 370px);
   border-top: 1px solid var(--line);
   overflow: hidden;
+  opacity:0;
+    transform:translateY(40px);
+
+    transition:
+        .9s cubic-bezier(.22,1,.36,1);
+}
+
+.about-course.is-visible .about-course__filmstrip{
+
+    opacity:1;
+    transform:none;
+
+}
+
+.filmstrip-item img{
+
+    transform:scale(1.12);
+
+    transition:
+        transform 1.4s cubic-bezier(.22,1,.36,1),
+        filter .6s ease;
+
+}
+
+.about-course.is-visible .filmstrip-item img{
+
+    transform:scale(1);
+
 }
 
 .filmstrip-item {
@@ -865,6 +1046,15 @@ margin-top:-.40em;
     background:#F6F1E6;
     border-top:1px solid rgba(0,0,0,.12);
     margin-top:30px; /* antes no tenía */
+    opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s cubic-bezier(.22, 1, .36, 1), 
+              transform .9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.process.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ── TOP BAR ── */
@@ -907,6 +1097,20 @@ margin-top:-.40em;
   line-height: .92;
   letter-spacing: -.05em;
   text-transform: uppercase;
+}
+
+.process__title .statement-char {
+  display: inline-block;
+  color: transparent;
+  opacity: .18;
+  transform: translateY(0.12em);
+  transition: color 0.4s ease, opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process__title .statement-char.is-filled {
+  color: #111; /* O tu color de texto principal */
+  opacity: 1;
+  transform: none;
 }
 
 /* ── GRID FLEX ── */
@@ -1399,6 +1603,41 @@ margin-top:-.40em;
   width: 1px;
   background: rgba(0,0,0,.12);
   align-self: stretch;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.2s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Cuando se activa la clase de entrada */
+.guitar-builder.is-visible .gb-divider {
+  transform: scaleY(1);
+}
+
+.gb-preview img {
+  width: 100%;
+  max-width: 300px;
+  /* Estado inicial */
+  transform: scale(1);
+  transition: transform 2s cubic-bezier(.22, 1, .36, 1), opacity .28s ease;
+}
+
+/* Efecto de respiración: mientras esté visible, crece imperceptiblemente */
+.guitar-builder.is-visible .gb-preview img {
+  transform: scale(1.05); 
+}
+
+/* Cuando el usuario cambia la configuración */
+.gb-preview img.is-changing {
+  opacity: 0;
+  transform: scale(0.97); /* Pequeño retroceso al cambiar */
+}
+
+.gb-option {
+  transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275), opacity 0.5s ease;
+}
+
+.gb-option:active {
+  transform: scale(0.95); /* El botón se comprime al hacer click */
 }
 
 /* ── CONFIG — más cerca del borde izquierdo ── */
@@ -1559,6 +1798,47 @@ margin-top:-.40em;
   transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
+
+/* ── ANIMACIÓN DE ENTRADA ── */
+.guitar-builder {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(.22, 1, .36, 1), 
+              transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.guitar-builder.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estado inicial (oculto) */
+.gb-preview, 
+.gb-header, 
+.gb-options-wrap {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(.22, 1, .36, 1), 
+                transform 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Cuando la sección se hace visible, activamos los delays */
+.guitar-builder.is-visible .gb-preview { transition-delay: 0.1s; opacity: 1; transform: none; }
+.guitar-builder.is-visible .gb-header { transition-delay: 0.3s; opacity: 1; transform: none; }
+.guitar-builder.is-visible .gb-options-wrap { transition-delay: 0.5s; opacity: 1; transform: none; }
+
+/* Efecto "llenado" para las opciones (cada botón aparece uno tras otro) */
+.gb-option {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.guitar-builder.is-visible .gb-option {
+    opacity: 1;
+    transform: none;
+}
+
 
 @media (max-width: 900px) {
   .gb-option-swatch {
@@ -1974,6 +2254,44 @@ z-index:1;
   font-style: italic;
   line-height: 1.5;
   color: rgba(0,0,0,.5);
+}
+
+/* Efecto de máscara para el texto: el texto "entra" desde abajo y se desvanece */
+.luthiers-feature__panel {
+    transition: opacity .8s cubic-bezier(.22, 1, .36, 1), 
+                transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Efecto Ken Burns en las imágenes (zoom lento) */
+.luthiers-feature__slide {
+    transition: opacity .9s ease, transform 1.2s cubic-bezier(.22, 1, .36, 1);
+    background-size: 105% auto; /* Zoom inicial */
+}
+
+.luthiers-feature__slide.is-active {
+    background-size: 100% auto; /* Zoom final al estar activo */
+}
+
+/* El divisor o botón que "brilla" al aparecer */
+.luthiers-feature__next {
+    transition: all .4s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+/* Estado inicial (cuando NO se ha visto) */
+.luthiers-feature {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(10px);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 1.2s ease;
+}
+
+/* Estado final (cuando el observer la detecta) */
+.luthiers-feature.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
 }
 
 /* ── RESPONSIVE ── */
@@ -2417,6 +2735,35 @@ z-index:1;
 .cta-final__btn:hover svg {
   transform: translateX(4px);
 }
+
+/* Estado oculto antes de la animación */
+.cta-final__bg img {
+  transform: scale(1.1);
+  transition: transform 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-final__content > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Estado activo (cuando entra la sección) */
+.cta-final.is-visible .cta-final__bg img {
+  transform: scale(1);
+}
+
+.cta-final.is-visible .cta-final__content > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays escalonados para cada elemento del contenido */
+.cta-final.is-visible .cta-final__kicker { transition-delay: 0.2s; }
+.cta-final.is-visible .cta-final__title { transition-delay: 0.4s; }
+.cta-final.is-visible .cta-final__text { transition-delay: 0.6s; }
+.cta-final.is-visible .cta-final__btn { transition-delay: 0.8s; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {

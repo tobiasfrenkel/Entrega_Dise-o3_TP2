@@ -133,6 +133,166 @@ button {
   font: inherit;
 }
 
+/* ====================================================
+   LOADER — pantalla de carga
+   Pegá esto en tu CSS principal o en un <style> en el <head>
+==================================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0e0b08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* sale con fade + scale */
+  transition:
+    opacity .8s cubic-bezier(.16, 1, .3, 1),
+    transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+
+.loader.is-hidden {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* ── FONDO con degradado cálido ── */
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 60% 40%, rgba(61,42,26,.7) 0%, transparent 65%),
+    radial-gradient(ellipse at 20% 80%, rgba(122,92,56,.25) 0%, transparent 55%);
+  z-index: 0;
+}
+
+/* ── GRAIN ── */
+.loader-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+  pointer-events: none;
+}
+
+/* ── CONTENIDO ── */
+.loader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 4vw, 48px);
+  width: min(90vw, 400px);
+}
+
+/* ── LOGO ── */
+.loader-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: translateY(12px);
+  animation: loaderFadeUp .7s cubic-bezier(.16,1,.3,1) .1s forwards;
+}
+
+.loader-logo {
+  width: clamp(100px, 18vw, 160px);
+  filter: brightness(0) invert(1);
+  opacity: .92;
+}
+
+/* Fallback si no hay imagen: texto */
+.loader-logo-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+  color: #e8ddd0;
+}
+
+/* ── BARRA ── */
+.loader-bar-wrap {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+
+  opacity: 0;
+  animation: loaderFadeUp .6s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+
+.loader-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #ff5b00;
+  transition: width .1s linear;
+}
+
+/* ── BOTTOM: label + porcentaje ── */
+.loader-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  opacity: 0;
+  animation: loaderFadeUp .6s cubic-bezier(.16,1,.3,1) .4s forwards;
+}
+
+.loader-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+
+.loader-percent {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.4);
+  font-variant-numeric: tabular-nums;
+  transition: color .2s ease;
+}
+
+/* cuando llega a 100% el porcentaje se pone naranja */
+.loader-percent.is-done {
+  color: #ff5b00;
+}
+
+/* ── ANIMACIÓN ENTRADA ── */
+@keyframes loaderFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── BLOQUEA SCROLL MIENTRAS CARGA ── */
+body.is-loading {
+  overflow: hidden;
+}
+
 /* =========================
    GLOBAL KICKER SYSTEM
 ========================= */
@@ -567,6 +727,26 @@ main {
   z-index: 10000;
 }
 
+.hero-floating{
+    animation:heroFloat 18s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
 @media (max-width:900px){
 
   .hero{
@@ -821,6 +1001,73 @@ main {
     color:rgba(255,255,255,.78);
 }
 
+/* ==========================
+   ABOUT INTRO ANIMATION
+========================== */
+
+@media (min-width:901px){
+
+.about .kicker,
+.about .statement,
+.about .about-copy,
+.about .about-card{
+    opacity:0;
+    transform:translateY(50px);
+}
+
+.about.show .kicker{
+    opacity:1;
+    transform:none;
+    transition:.8s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .statement{
+    opacity:1;
+    transform:none;
+    transition:.8s .15s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .about-copy{
+    opacity:1;
+    transform:none;
+    transition:.8s .3s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .about-card{
+    opacity:1;
+    transform:none;
+}
+
+.about.show .about-card:nth-child(1){
+    transition:.8s .18s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .about-card:nth-child(2){
+    transition:.8s .24s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .about-card:nth-child(3){
+    transition:.8s .30s cubic-bezier(.22,1,.36,1);
+}
+
+.about.show .about-card:nth-child(4){
+    transition:.8s .36s cubic-bezier(.22,1,.36,1);
+}
+}
+
+@media (max-width:900px){
+
+.about .kicker,
+.about .statement,
+.about .about-copy,
+.about .about-card{
+    opacity:1;
+    transform:none;
+    transition:none;
+}
+
+}
+
 /* =========================
    MONITORES GRANDES
 ========================= */
@@ -1062,6 +1309,54 @@ main {
 
 .intro-label{
     color:rgba(255,255,255,.6);
+}
+
+/* ==========================================
+   INTRO EXPERIENCE ANIMATION
+========================================== */
+
+.intro-text,
+.experience-card{
+    opacity:0;
+    transform:translateY(50px);
+}
+
+.intro-cards.show .intro-text{
+    opacity:1;
+    transform:none;
+    transition:.8s cubic-bezier(.22,1,.36,1);
+}
+
+.intro-cards.show .experience-card{
+    opacity:1;
+    transform:none;
+}
+
+.intro-cards.show .experience-card:nth-child(1){
+    transition:.8s .18s cubic-bezier(.22,1,.36,1);
+}
+
+.intro-cards.show .experience-card:nth-child(2){
+    transition:.8s .28s cubic-bezier(.22,1,.36,1);
+}
+
+.intro-cards.show .experience-card:nth-child(3){
+    transition:.8s .38s cubic-bezier(.22,1,.36,1);
+}
+
+.intro-cards.show .experience-card:nth-child(4){
+    transition:.8s .48s cubic-bezier(.22,1,.36,1);
+}
+
+@media(max-width:900px){
+
+.intro-text,
+.experience-card{
+    opacity:1;
+    transform:none;
+    transition:none;
+}
+
 }
 
 @media (min-width:1900px){
@@ -1346,26 +1641,34 @@ main {
 }
 
 .courses .kicker{
-    width:100%;
-    padding:0px 50px;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    display:flex;
+    align-items:center;
+    padding:18px 0;
     margin-bottom:42px;
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
 }
 
 .courses .kicker-inner{
-    height:64px;
     display:flex;
     align-items:center;
-    gap:14px;
-    padding:0;
-    font-size:14px;
-    font-weight:700;
+    gap:12px;
+    padding:0 clamp(20px,5vw,54px);
+}
+
+.courses .kicker span{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
 }
 
 .courses .kicker img{
-    width:20px;
-    height:20px;
+    width:14px;
+    opacity:.8;
+    transform:scaleX(-1);
 }
 
 .courses-container{
@@ -1556,6 +1859,50 @@ main {
 
 .course-cta:hover span {
   transform: translateX(4px);
+}
+
+/* ==========================================
+   COURSES REVEAL
+========================================== */
+
+.courses .kicker,
+.course-card{
+    opacity:0;
+    transform:translateY(50px);
+}
+
+.courses.show .kicker{
+    opacity:1;
+    transform:none;
+    transition:.8s cubic-bezier(.22,1,.36,1);
+}
+
+.courses.show .course-card{
+    opacity:1;
+    transform:none;
+}
+
+.courses.show .course-card:nth-child(1){
+    transition:.8s .18s cubic-bezier(.22,1,.36,1);
+}
+
+.courses.show .course-card:nth-child(2){
+    transition:.8s .30s cubic-bezier(.22,1,.36,1);
+}
+
+.courses.show .course-card:nth-child(3){
+    transition:.8s .42s cubic-bezier(.22,1,.36,1);
+}
+
+@media(max-width:960px){
+
+.courses .kicker,
+.course-card{
+    opacity:1;
+    transform:none;
+    transition:none;
+}
+
 }
 
 /* =========================
@@ -1852,6 +2199,90 @@ main {
     margin-top:12px;
 }
 
+/* ==========================================
+   GUITAR PARTS REVEAL
+========================================== */
+
+.guitar-parts .kicker,
+.parts-title,
+.parts-subtitle,
+.parts-media,
+.part-block{
+
+    opacity:0;
+    transform:translateY(50px);
+
+}
+
+.guitar-parts.show .kicker{
+
+    opacity:1;
+    transform:none;
+    transition:.8s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .parts-title{
+
+    opacity:1;
+    transform:none;
+    transition:.8s .15s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .parts-subtitle{
+
+    opacity:1;
+    transform:none;
+    transition:.8s .3s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .parts-media{
+
+    opacity:1;
+    transform:none;
+    transition:.9s .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .part-block{
+
+    opacity:1;
+    transform:none;
+
+}
+
+.guitar-parts.show .part-block:nth-child(1){
+
+    transition:.7s .55s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .part-block:nth-child(2){
+
+    transition:.7s .65s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .part-block:nth-child(3){
+
+    transition:.7s .75s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .part-block:nth-child(4){
+
+    transition:.7s .85s cubic-bezier(.22,1,.36,1);
+
+}
+
+.guitar-parts.show .part-block:nth-child(5){
+
+    transition:.7s .95s cubic-bezier(.22,1,.36,1);
+
+}
+
 @keyframes premiumFloat{
 
     0%{
@@ -1950,6 +2381,18 @@ main {
     .part-block.is-selected .part-item{
         font-size:30px;
     }
+
+    .guitar-parts .kicker,
+.parts-title,
+.parts-subtitle,
+.parts-media,
+.part-block{
+
+    opacity:1;
+    transform:none;
+    transition:none;
+
+}
 
 }
 
@@ -2183,6 +2626,83 @@ main {
 .editorial-statement.is-open-kb .editorial-statement-icon::after{
     transform:translate(-50%,-50%) rotate(90deg);
     opacity:0;
+}
+
+/* ==========================================
+   EDITORIAL REVEAL
+========================================== */
+
+.editorial-kicker,
+.editorial-line span,
+.editorial-lede,
+.editorial-statement{
+
+    opacity:0;
+    transform:translateY(50px);
+
+}
+
+.editorial.is-visible .editorial-kicker{
+
+    opacity:1;
+    transform:none;
+    transition:.8s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-line:nth-child(1) span{
+
+    opacity:1;
+    transform:none;
+    transition:.8s .15s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-line:nth-child(2) span{
+
+    opacity:1;
+    transform:none;
+    transition:.8s .28s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-lede{
+
+    opacity:1;
+    transform:none;
+    transition:.8s .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-statement{
+
+    opacity:1;
+    transform:none;
+
+}
+
+.editorial.is-visible .editorial-statement:nth-child(1){
+
+    transition:.7s .60s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-statement:nth-child(2){
+
+    transition:.7s .72s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-statement:nth-child(3){
+
+    transition:.7s .84s cubic-bezier(.22,1,.36,1);
+
+}
+
+.editorial.is-visible .editorial-statement:nth-child(4){
+
+    transition:.7s .96s cubic-bezier(.22,1,.36,1);
+
 }
 
 /* =====================================================
@@ -2421,6 +2941,57 @@ main {
 
 .materials-card.is-flipped:hover .materials-card-inner{
     transform:rotateY(180deg) translateY(-6px);
+}
+
+/* ==========================
+   MATERIALS INTRO ANIMATION
+========================== */
+
+.materials .kicker,
+.materials-header,
+.materials-card{
+    opacity:0;
+    transform:translateY(50px);
+}
+
+.materials.show .kicker{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.materials.show .materials-header{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s .15s,
+        transform .8s .15s cubic-bezier(.22,1,.36,1);
+}
+
+.materials.show .materials-card{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.materials.show .materials-card:nth-child(1){
+    transition-delay:.28s;
+}
+
+.materials.show .materials-card:nth-child(2){
+    transition-delay:.38s;
+}
+
+.materials.show .materials-card:nth-child(3){
+    transition-delay:.48s;
+}
+
+.materials.show .materials-card:nth-child(4){
+    transition-delay:.58s;
 }
 
 /* =====================================================
@@ -2708,6 +3279,41 @@ main {
 
 .marquee-track.images img:hover{
     transform:translateY(-8px);
+}
+
+/* ==========================
+   GALLERY INTRO ANIMATION
+========================== */
+
+.gallery-marquee-section .kicker,
+.gallery-heading,
+.gallery-marquee{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.gallery-marquee-section.show .kicker{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.gallery-marquee-section.show .gallery-heading{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s .15s,
+        transform .8s .15s cubic-bezier(.22,1,.36,1);
+}
+
+.gallery-marquee-section.show .gallery-marquee{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .9s .35s,
+        transform .9s .35s cubic-bezier(.22,1,.36,1);
 }
 
 
@@ -3041,6 +3647,41 @@ main {
   color: #ff5b00;
 }
 
+/* ==========================
+   FOOTER INTRO ANIMATION
+========================== */
+
+.footer-grid,
+.footer-form,
+.footer-bottom{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.site-footer.show .footer-grid{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.site-footer.show .footer-form{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s .18s,
+        transform .8s .18s cubic-bezier(.22,1,.36,1);
+}
+
+.site-footer.show .footer-bottom{
+    opacity:1;
+    transform:none;
+    transition:
+        opacity .8s .35s,
+        transform .8s .35s cubic-bezier(.22,1,.36,1);
+}
+
 @media(max-width:900px){
 
     .footer-grid{
@@ -3049,6 +3690,12 @@ main {
 
     .form-row{
         grid-template-columns:1fr;
+    }
+
+    .footer-uikit-btn{
+        margin-top:20px;      /* o 30px si querés más aire */
+        margin-bottom:0;
+        width:fit-content;
     }
 }
 

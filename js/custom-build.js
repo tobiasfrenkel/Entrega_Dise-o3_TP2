@@ -83,6 +83,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ====================================================
+// HERO SECTION - ANIMACION
+// ====================================================
+
+function initBuildHero(){
+
+    const hero = document.querySelector(".build-hero");
+    const image = document.querySelector(".build-hero-frame img");
+
+    if(!hero || !image) return;
+
+    hero.classList.add("is-visible");
+
+    hero.addEventListener("mousemove",(e)=>{
+
+        const rect = hero.getBoundingClientRect();
+
+        const x = (e.clientX-rect.left)/rect.width-.5;
+        const y = (e.clientY-rect.top)/rect.height-.5;
+
+        image.style.transform =
+        `translate(${x*14}px,${y*14}px) scale(1.05)`;
+
+    });
+
+    hero.addEventListener("mouseleave",()=>{
+
+        image.style.transform = "";
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const hero=document.querySelector(".build-hero");
+
+    if(!hero) return;
+
+    const observer=new IntersectionObserver((entries)=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                hero.classList.add("is-visible");
+
+                observer.disconnect();
+
+            }
+
+        });
+
+    },{
+
+        threshold:.25
+
+    });
+
+    observer.observe(hero);
+
+});
+
+// ====================================================
 // ABOUT COURSE — reveal + parallax
 // ====================================================
 
@@ -145,6 +208,32 @@ filmItems.forEach(item => {
 });
 
 
+// =========================
+// INTRO EXPERIENCE ANIMATION
+// =========================
+
+const introSection = document.querySelector(".intro-cards");
+
+if (introSection) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            introSection.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.2
+    });
+
+    observer.observe(introSection);
+
+}
+
+
 
 // =========================
 // IMPACT — scroll reveal
@@ -183,95 +272,106 @@ filmItems.forEach(item => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ==========================================
-     PROCESO DE CONSTRUCCIÓN
-     Solo click/teclado — sin hover
-  ========================================== */
+/* ==========================================
+   PROCESO DE CONSTRUCCIÓN
+========================================== */
 
-  const processCards = document.querySelectorAll(".process-card");
+const processSection = document.querySelector('.process');
+const processCards = document.querySelectorAll(".process-card");
 
-  if (processCards.length) {
-
-    function activateProcessCard(card) {
-      processCards.forEach(c => {
-        c.classList.remove("is-active");
-        c.setAttribute("aria-selected", "false");
-      });
-      card.classList.add("is-active");
-      card.setAttribute("aria-selected", "true");
-    }
-
-    processCards.forEach(card => {
-
-      // Click
-      card.addEventListener("click", () => {
-        activateProcessCard(card);
-      });
-
-      // Teclado
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          activateProcessCard(card);
-        }
-      });
-
+if (processSection) {
+  // 1. Observer para revelar la sección al hacer scroll
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        processSection.classList.add('is-visible');
+        sectionObserver.disconnect();
+      }
     });
+  }, { threshold: 0.2 });
 
+  sectionObserver.observe(processSection);
+}
+
+// 2. Lógica de selección de tarjetas
+if (processCards.length) {
+  function activateProcessCard(card) {
+    processCards.forEach(c => {
+      c.classList.remove("is-active");
+      c.setAttribute("aria-selected", "false");
+    });
+    card.classList.add("is-active");
+    card.setAttribute("aria-selected", "true");
   }
 
-  /* ==========================================
-     GUITAR BUILDER — imagen según cuerpo + madera
-  ========================================== */
+  processCards.forEach(card => {
+    card.addEventListener("click", () => activateProcessCard(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        activateProcessCard(card);
+      }
+    });
+  });
+}
 
-  const img = document.getElementById("guitarImage");
+/* ==========================================
+   GUITAR BUILDER — con observer de entrada
+========================================== */
 
-  if (img) {
+const guitarSection = document.querySelector(".guitar-builder");
+const guitarImg = document.getElementById("guitarImage");
 
-    const bodyButtons = document.querySelectorAll(".gb-option--body");
-    const woodButtons = document.querySelectorAll(".gb-option--wood");
+// 1. Observer para revelar sección
+if (guitarSection) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        guitarSection.classList.add('is-visible');
+        sectionObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
 
-    const gbState = {
-      body: document.querySelector(".gb-option--body.is-active")?.dataset.body || "clasica",
-      wood: document.querySelector(".gb-option--wood.is-active")?.dataset.wood || "caoba"
-    };
+  sectionObserver.observe(guitarSection);
+}
 
-    function updateGuitarImage() {
+// 2. Lógica de configuración
+if (guitarImg) {
+  const bodyButtons = document.querySelectorAll(".gb-option--body");
+  const woodButtons = document.querySelectorAll(".gb-option--wood");
 
-      const fileName = `./assets/images/guitarra-${gbState.body}-${gbState.wood}.png`;
+  const gbState = {
+    body: "clasica",
+    wood: "caoba"
+  };
 
-      img.classList.add("is-changing");
+  function updateGuitarImage() {
+    // Agregamos un ligero fade out antes del cambio
+    guitarImg.classList.add("is-changing");
 
-      setTimeout(() => {
-        img.src = fileName;
-        img.alt = `Guitarra ${gbState.body} en ${gbState.wood}`;
-        img.classList.remove("is-changing");
-      }, 280); // coincide con los .28s de transición del CSS
+    setTimeout(() => {
+      guitarImg.src = `./assets/images/guitarra-${gbState.body}-${gbState.wood}.png`;
+      guitarImg.alt = `Guitarra ${gbState.body} en ${gbState.wood}`;
+      guitarImg.classList.remove("is-changing");
+    }, 280); 
+  }
 
-    }
+  function bindGbGroup(buttons, key) {
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
 
-    function bindGbGroup(buttons, key) {
-
-      buttons.forEach(btn => {
-
-        btn.addEventListener("click", () => {
-
-          buttons.forEach(b => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
-
-          gbState[key] = btn.dataset[key];
-          updateGuitarImage();
-
-        });
-
+        gbState[key] = btn.dataset[key];
+        updateGuitarImage();
       });
-
-    }
-
-    bindGbGroup(bodyButtons, "body");
-    bindGbGroup(woodButtons, "wood");
-
+    });
   }
+
+  bindGbGroup(bodyButtons, "body");
+  bindGbGroup(woodButtons, "wood");
+}
 
   /* ======================================================
      NUESTROS LUTHIERS — imagen destacada
@@ -295,28 +395,41 @@ document.addEventListener("DOMContentLoaded", () => {
     function padLuthiers(n) {
       return String(n + 1).padStart(2, "0");
     }
-
-    function renderLuthiers(newIndex) {
-
-      luthiersSlides.forEach((slide, i) => {
+function renderLuthiers(newIndex) {
+    // 1. Manejo de Slides
+    luthiersSlides.forEach((slide, i) => {
         slide.classList.remove("is-active", "is-prev");
         if (i === newIndex) slide.classList.add("is-active");
         else if (i === luthiersIndex) slide.classList.add("is-prev");
-      });
+    });
 
-      luthiersThumbs.forEach((thumb, i) => {
-        thumb.classList.toggle("is-active", i === newIndex);
-      });
+    // 2. Animación de Paneles (Aquí está la magia)
+    luthiersPanels.forEach((panel, i) => {
+        const isActive = i === newIndex;
+        panel.classList.toggle("is-active", isActive);
+        
+        // Efecto visual: resetear animación de elementos hijos
+        if (isActive) {
+            const elements = panel.querySelectorAll('h3, p');
+            elements.forEach((el, idx) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(15px)';
+                // Delay escalonado para cada línea de texto
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 150 + (idx * 100));
+            });
+        }
+    });
 
-      luthiersPanels.forEach((panel, i) => {
-        panel.classList.toggle("is-active", i === newIndex);
-      });
+    // 3. UI
+    luthiersThumbs.forEach((thumb, i) => thumb.classList.toggle("is-active", i === newIndex));
+    if (luthiersCurrentLabel) luthiersCurrentLabel.textContent = padLuthiers(newIndex);
 
-      if (luthiersCurrentLabel) luthiersCurrentLabel.textContent = padLuthiers(newIndex);
-
-      luthiersIndex = newIndex;
-
-    }
+    luthiersIndex = newIndex;
+}
 
     function goToLuthier(newIndex) {
       const total = luthiersSlides.length;
@@ -369,6 +482,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   }
+
+  /* ======================================================
+   ANIMACIÓN DE ENTRADA (Revelado al hacer scroll)
+====================================================== */
+const luthierSection = document.getElementById("luthiers");
+
+if (luthierSection) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Aplicamos la clase que quita el blur y el desplazamiento
+                luthierSection.classList.add("is-visible");
+                
+                // Una vez revelado, dejamos de observar para ahorrar recursos
+                sectionObserver.disconnect();
+            }
+        });
+    }, { 
+        threshold: 0.2 // Se dispara cuando el 20% de la sección es visible
+    });
+
+    sectionObserver.observe(luthierSection);
+}
+
+
+/* ======================================================
+   CTA FINAL — animación al hacer scroll
+====================================================== */
+const ctaSection = document.getElementById("cta-final");
+
+if (ctaSection) {
+  const ctaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Añadimos la clase que dispara todas las transiciones
+        ctaSection.classList.add("is-visible");
+        
+        // Desconectamos para no volver a ejecutar
+        ctaObserver.disconnect();
+      }
+    });
+  }, { 
+    threshold: 0.3 // Se activa cuando el 30% de la sección es visible
+  });
+
+  ctaObserver.observe(ctaSection);
+}
+
 
   /* ==========================================
      GALLERY — tarjeta destacada vía flechas/dots

@@ -14,6 +14,31 @@
 
 <div class="bg-grain" aria-hidden="true"></div>
 
+<!-- PANTALLA DE CARGA — pegá esto al inicio del <body>, antes de todo -->
+<div class="loader" id="loader">
+
+  <div class="loader-bg"></div>
+  <div class="loader-grain"></div>
+
+  <div class="loader-content">
+
+    <div class="loader-brand">
+      <img src="./assets/icons/TRASTES.png" alt="Trastes" class="loader-logo">
+    </div>
+
+    <div class="loader-bar-wrap">
+      <div class="loader-bar" id="loaderBar"></div>
+    </div>
+
+    <div class="loader-bottom">
+      <span class="loader-label">Luthería · Buenos Aires</span>
+      <span class="loader-percent" id="loaderPercent">0%</span>
+    </div>
+
+  </div>
+
+</div>
+
 
   <!-- Encabezado editorial fijo: marca minima, navegacion horizontal y lectura suiza. -->
 <header class="site-header" data-reveal>
@@ -36,6 +61,7 @@
 </header>
 
   <main id="inicio">
+
     <!-- 1. Hero editorial: respeta el primer bloque del wireframe con titular gigante, bajada, CTA e imagen/video principal. -->
     <section class="hero section-rule" aria-labelledby="hero-title">
       <div class="eyebrow-row" data-reveal>
@@ -780,7 +806,7 @@
 </section>
 
 
-<!-- 11. Contacto y footer -->
+<!-- 10. Contacto y footer -->
 <footer id="contacto" class="site-footer">
     <div class="footer-bg">
         <video autoplay muted loop playsinline>

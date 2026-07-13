@@ -7,6 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+*{
+    max-width:100%;
+}
+
 /* ============================================================
    RESET + BASE
 ============================================================ */
@@ -59,6 +69,58 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
+}
+
+/* ====================================================
+   UI KIT — Botón volver al inicio
+==================================================== */
+
+.btn-back {
+  position: fixed;
+  top: clamp(16px, 3vw, 28px);
+  left: clamp(16px, 3vw, 28px);
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #F6F1E6;
+  color: #111;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+}
+
+.btn-back svg {
+  flex: none;
+  transition: transform .35s ease;
+}
+
+.btn-back:hover {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-back:hover svg {
+  transform: translateX(-4px);
+}
+
+@media (max-width: 700px) {
+  .btn-back span {
+    display: none;
+  }
+
+  .btn-back {
+    padding: 10px;
+  }
 }
 
 /* ============================================================
@@ -778,6 +840,174 @@ body {
 .filmstrip-demo-item:nth-child(3) { background: var(--cedar); }
 .filmstrip-demo-item:nth-child(4) { background: var(--dark-2); }
 
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width:768px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    .uikit{
+        width:100%;
+        padding:0 20px 80px;
+        overflow:hidden;
+    }
+
+    /* Header */
+
+    .uikit-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        padding:40px 0 36px;
+        margin-bottom:48px;
+    }
+
+    .uikit-brand{
+        font-size:42px;
+    }
+
+    .uikit-meta{
+        text-align:left;
+    }
+
+    /* Sections */
+
+    .uikit-section{
+        margin-bottom:56px;
+    }
+
+    .uikit-section-label{
+        margin-bottom:24px;
+    }
+
+    /* TODOS LOS GRIDS */
+
+    .uikit-grid-2,
+    .uikit-grid-3,
+    .uikit-grid-4{
+        grid-template-columns:1fr !important;
+        gap:18px;
+    }
+
+    /* Paleta de 6 columnas */
+
+    [style*="repeat(6,1fr)"]{
+        grid-template-columns:1fr !important;
+    }
+
+    /* Botones */
+
+    .uikit-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    /* Tipografía */
+
+    .type-display-lg{
+        font-size:34px;
+    }
+
+    .type-display-md{
+        font-size:24px;
+    }
+
+    .type-body{
+        max-width:100%;
+    }
+
+    /* Cards */
+
+    .card-footer{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+    }
+
+    .card-footer .btn{
+        width:100%;
+    }
+
+    /* Stats */
+
+    .card-stat{
+        padding-top:18px;
+    }
+
+    .card-stat-num{
+        font-size:52px;
+    }
+
+    /* Navigation */
+
+    .nav-demo{
+        height:auto;
+        padding:22px 20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+    }
+
+    .nav-links{
+        width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+    }
+
+    /* Filmstrip */
+
+    .filmstrip-demo{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .filmstrip-demo-item{
+        min-height:72px;
+        border-right:none;
+        border-bottom:1px solid var(--line);
+    }
+
+    .filmstrip-demo-item:last-child{
+        border-bottom:none;
+    }
+
+    .filmstrip-demo-item:hover,
+    .filmstrip-demo-item.is-active{
+        flex:1;
+    }
+
+    /* Dark surface */
+
+    .dark-surface{
+        padding:24px 20px;
+    }
+
+    /* Kicker bar */
+
+    .kicker-bar{
+        padding:16px 20px;
+        flex-wrap:wrap;
+    }
+
+    /* Inputs */
+
+    .input{
+        width:100%;
+    }
+
+}
+
 </style>
 </head>
 <body>
@@ -795,6 +1025,14 @@ body {
       <p>Luthería · Buenos Aires</p>
     </div>
   </div>
+
+  <!-- Volver al inicio (UI kit) -->
+<a href="./index.html" class="btn-back" aria-label="Volver al menú principal">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M14 8H2M2 8L7 3M2 8L7 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>Volver al inicio</span>
+</a>
 
   <!-- 1. PALETA -->
   <div class="uikit-section">

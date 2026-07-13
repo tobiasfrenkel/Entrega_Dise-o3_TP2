@@ -12,6 +12,172 @@ document.querySelectorAll("video").forEach(v => {
   }
 });
 
+function startHeroIntro() {
+
+    const lines = document.querySelectorAll(".hero-line");
+    const note  = document.querySelector(".hero-title-note");
+    const image = document.querySelector(".hero-media");
+
+    lines.forEach(el => {
+
+        el.style.opacity = 0;
+        el.style.transform = "translateY(45px)";
+
+    });
+
+    if(note){
+
+        note.style.opacity = 0;
+        note.style.transform = "translateY(30px)";
+
+    }
+
+    if(image){
+
+        image.style.opacity = 0;
+        image.style.transform = "scale(1.08)";
+
+    }
+
+    // Líneas
+
+    lines.forEach((line,i)=>{
+
+        setTimeout(()=>{
+
+            line.style.transition =
+            "all .9s cubic-bezier(.22,1,.36,1)";
+
+            line.style.opacity=1;
+            line.style.transform="translateY(0)";
+
+        },i*180);
+
+    });
+
+    // Bajada
+
+    setTimeout(()=>{
+
+        if(note){
+
+            note.style.transition =
+            "all .9s cubic-bezier(.22,1,.36,1)";
+
+            note.style.opacity=1;
+            note.style.transform="translateY(0)";
+
+        }
+
+    },420);
+
+    // Imagen
+
+    setTimeout(()=>{
+
+        if(image){
+
+            image.style.transition=
+            "opacity 1s ease, transform 1.6s cubic-bezier(.22,1,.36,1)";
+
+            image.style.opacity=1;
+            image.style.transform="scale(1)";
+
+            image.classList.add("hero-floating");
+
+        }
+
+    },650);
+
+}
+
+
+
+// ====================================================
+// LOADER — pantalla de carga
+// Pegá este script antes del cierre </body>
+// ====================================================
+
+(function () {
+
+  const loader     = document.getElementById('loader');
+  const bar        = document.getElementById('loaderBar');
+  const percent    = document.getElementById('loaderPercent');
+
+  if (!loader) return;
+
+  // Bloqueamos scroll mientras carga
+  document.body.classList.add('is-loading');
+
+  let progress = 0;
+  let done = false;
+
+  // ── PROGRESO SIMULADO ──
+  // Avanza rápido al principio, se frena cerca del 90%
+  // y termina cuando la página realmente cargó
+  function tick() {
+    if (done) return;
+
+    const increment = progress < 70
+      ? Math.random() * 12
+      : progress < 90
+        ? Math.random() * 3
+        : 0; // espera a que cargue la página
+
+    progress = Math.min(progress + increment, 90);
+    setProgress(progress);
+
+    setTimeout(tick, 80 + Math.random() * 60);
+  }
+
+  function setProgress(val) {
+    const rounded = Math.floor(val);
+    bar.style.width = val + '%';
+    percent.textContent = rounded + '%';
+    if (rounded >= 100) percent.classList.add('is-done');
+  }
+
+  function finish() {
+    if (done) return;
+    done = true;
+
+    // lleva la barra al 100%
+    progress = 100;
+    setProgress(100);
+
+    // pequeña pausa para que se vea el 100%
+    setTimeout(() => {
+      loader.classList.add("is-hidden");
+document.body.classList.remove("is-loading");
+
+setTimeout(() => {
+    startHeroIntro();
+},250);
+
+      // lo saca del DOM cuando termina la transición
+      loader.addEventListener('transitionend', () => {
+        loader.remove();
+      }, { once: true });
+    }, 400);
+  }
+
+  // Arranca el progreso
+  tick();
+
+  // Cuando la página carga completo, terminamos
+  if (document.readyState === 'complete') {
+    setTimeout(finish, 300);
+  } else {
+    window.addEventListener('load', () => {
+      setTimeout(finish, 300);
+    });
+  }
+
+  // Fallback: si tarda más de 4 segundos, cerramos igual
+  setTimeout(finish, 4000);
+
+})();
+
   // Revela bloques al entrar en pantalla
   const revealItems = document.querySelectorAll("[data-reveal]");
   const revealObserver = new IntersectionObserver((entries) => {
@@ -50,7 +216,7 @@ document.querySelectorAll(".main-nav a").forEach(link=>{
 
 });
 
-  
+
 
   // ABOUT SECTION
 
@@ -137,6 +303,52 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const about = document.querySelector(".about");
+
+if (about) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            about.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.2
+    });
+
+    observer.observe(about);
+
+}
+
+// =========================
+// INTRO EXPERIENCE ANIMATION
+// =========================
+
+const introSection = document.querySelector(".intro-cards");
+
+if (introSection) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            introSection.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.2
+    });
+
+    observer.observe(introSection);
+
+}
 
  // =========================
 // SECCION DE PRESENTACION
@@ -253,6 +465,31 @@ card.addEventListener("mouseleave", () => {
 
 })();
 
+// =========================
+// COURSES REVEAL
+// =========================
+
+const courses = document.querySelector(".courses");
+
+if (courses) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            courses.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.18
+    });
+
+    observer.observe(courses);
+
+}
+
   // =========================
   // PARTES DE GUITARRA
   // =========================
@@ -368,6 +605,33 @@ if (videoSection) {
   }
 
 });
+
+// =========================
+// GUITAR PARTS REVEAL
+// =========================
+
+const guitarParts = document.querySelector(".guitar-parts");
+
+if (guitarParts) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            guitarParts.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+
+        threshold:.18
+
+    });
+
+    observer.observe(guitarParts);
+
+}
 
 /* ======================================================
    EDITORIAL SECTION
@@ -522,17 +786,62 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 
+/* ==========================
+   MATERIALS REVEAL
+========================== */
+
+const materials = document.querySelector(".materials");
+
+if (materials) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            materials.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.18
+    });
+
+    observer.observe(materials);
+
+}
+
 /* ======================================================
    GALLERY MARQUEE - PREMIUM DRAG
 ====================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const section = document.querySelector(".gallery-marquee-section");
     const track = document.querySelector(".marquee-track.images");
 
-    if (!track) return;
+    if (!section || !track) return;
 
     track.innerHTML += track.innerHTML;
+
+    let started = false;
+
+    const revealObserver = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            section.classList.add("show");
+            started = true;
+
+            revealObserver.disconnect();
+
+        }
+
+    },{
+        threshold:.18
+    });
+
+    revealObserver.observe(section);
 
     let position = 0;
     let velocity = -1.2;
@@ -552,10 +861,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loop(){
 
-        if(!isDragging){
-
+        if(started && !isDragging){
             position += velocity;
-
         }
 
         if(position <= -halfWidth){
@@ -569,58 +876,56 @@ document.addEventListener("DOMContentLoaded", () => {
         track.style.transform = `translate3d(${position}px,0,0)`;
 
         requestAnimationFrame(loop);
-
     }
 
     loop();
 
     // ------------------------
-// Mouse Drag
-// ------------------------
+    // Mouse Drag
+    // ------------------------
 
-track.addEventListener("mousedown", (e) => {
+    track.addEventListener("mousedown",(e)=>{
 
-    e.preventDefault();
+        e.preventDefault();
 
-    isDragging = true;
-    lastX = e.clientX;
+        isDragging=true;
+        lastX=e.clientX;
 
-    document.body.style.userSelect = "none";
-    track.style.cursor = "grabbing";
+        document.body.style.userSelect="none";
+        track.style.cursor="grabbing";
 
-});
+    });
 
-window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove",(e)=>{
 
-    if (!isDragging) return;
+        if(!isDragging) return;
 
-    const delta = e.clientX - lastX;
+        const delta=e.clientX-lastX;
 
-    position += delta;
+        position+=delta;
+        lastX=e.clientX;
 
-    lastX = e.clientX;
+    });
 
-});
+    window.addEventListener("mouseup",()=>{
 
-window.addEventListener("mouseup", () => {
+        if(!isDragging) return;
 
-    if (!isDragging) return;
+        isDragging=false;
 
-    isDragging = false;
+        document.body.style.userSelect="";
+        track.style.cursor="grab";
 
-    document.body.style.userSelect = "";
-    track.style.cursor = "grab";
+    });
 
-});
+    window.addEventListener("mouseleave",()=>{
 
-window.addEventListener("mouseleave", () => {
+        isDragging=false;
 
-    isDragging = false;
+        document.body.style.userSelect="";
+        track.style.cursor="grab";
 
-    document.body.style.userSelect = "";
-    track.style.cursor = "grab";
-
-});
+    });
 
     // ------------------------
     // Touch
@@ -640,11 +945,9 @@ window.addEventListener("mouseleave", () => {
         if(!isDragging) return;
 
         const x=e.touches[0].clientX;
-
         const delta=x-lastX;
 
         position+=delta;
-
         velocity=delta;
 
         lastX=x;
@@ -658,6 +961,31 @@ window.addEventListener("mouseleave", () => {
     });
 
 });
+
+/* ==========================
+   FOOTER REVEAL
+========================== */
+
+const footer = document.querySelector(".site-footer");
+
+if (footer) {
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        if(entries[0].isIntersecting){
+
+            footer.classList.add("show");
+            observer.disconnect();
+
+        }
+
+    },{
+        threshold:.15
+    });
+
+    observer.observe(footer);
+
+}
 
 // =========================
 // INTRO FAST ANIMATION
