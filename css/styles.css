@@ -1240,7 +1240,6 @@ main {
     min-height:230px;
     border-top:1px solid rgba(255,255,255,.8);
     padding-top:22px;
-    cursor:pointer;
     overflow:hidden;
 }
 
@@ -1525,7 +1524,7 @@ main {
 
 
 .video-btn:hover{
-    background:var(--accent);
+    background: #ff5e00;
     border-color:var(--accent);
     color:white;
     transform:translateY(-10px);
@@ -1848,7 +1847,7 @@ main {
 }
 
 .course-cta:hover{
-    background:#d56911;
+    background:#ff5e00;
     transform:translateY(-4px);
     box-shadow:0 12px 28px rgba(201,123,60,.35);
 }
@@ -3328,6 +3327,7 @@ main {
     .gallery-title{
         font-size:clamp(36px,9vw,50px);
         margin-top: -20px;
+        line-height: 1.02;
     }
 
     .gallery-subtitle{
@@ -3541,7 +3541,7 @@ main {
 }
 
 .footer-form{
-    margin-top:70px;
+    margin-top:-60px;
     max-width:900px;
 }
 

@@ -314,7 +314,7 @@ HERO
 }
 
 .build-hero-strip-meta .btn:hover{
-    background:var(--accent);
+    background:#ff5e00;
     border-color:var(--accent);
     transform:translateY(-5px);
 }
@@ -566,7 +566,7 @@ margin-top:-.40em;
 }
 
 .about-course__title.accent {
-  color: var(--accent, #ff5b00);
+  color: #ff5e00;
 }
 
 .about-course.is-visible .title-line:nth-child(1) .about-course__title {
@@ -803,6 +803,28 @@ margin-top:-.40em;
     font-size:clamp(34px,9vw,48px);
 }
 
+/* todas las imágenes desplegadas, misma altura, sin interacción */
+  .filmstrip-item {
+    flex: 1 !important;
+    height: 200px !important;
+  }
+
+  .filmstrip-item--active {
+    flex: 1 !important;
+    height: 200px !important;
+  }
+
+  /* caption siempre visible */
+  .filmstrip-caption {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* sin hover ni animación en mobile */
+  .filmstrip-item:hover {
+    flex: 1 !important;
+  }
+
 }
 
 @media (min-width: 901px) and (max-width: 1400px) {
@@ -932,7 +954,6 @@ margin-top:-.40em;
 .impact-card {
   border-top: 1px solid rgba(255, 255, 255, .8);
   padding-top: 22px;
-  cursor: pointer;
   overflow: hidden;
   min-height: 200px;
 }
@@ -1320,7 +1341,6 @@ margin-top:-.40em;
     overflow:hidden;
     font-size:11px;
     color:rgba(0,0,0,.55);
-    font-style:normal;
 }
 
 .process-card.is-active .process-card__caption{
@@ -2002,49 +2022,73 @@ margin-top:-.40em;
   padding: clamp(48px, 6vw, 90px) 0;
 }
 
+/* Grid: imagen | texto | miniaturas */
 .luthiers-feature__grid {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 clamp(24px, 4vw, 70px);
+  padding: 0 clamp(64px, 4vw, 70px);
   display: grid;
-  grid-template-columns: auto minmax(300px, 420px) 1fr;
-  align-items: end;
-  gap: 0 clamp(28px, 4vw, 60px);
+  grid-template-columns: minmax(320px, 1.2fr) 1fr auto;
+  align-items: start;
+  gap: 0 clamp(32px, 4vw, 60px);
 }
 
-/* ── MINIATURAS: navegación manual, alineadas abajo ── */
+/* Miniaturas: columna vertical a la derecha */
 .luthiers-feature__thumbs {
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  align-self: end;
+  flex-direction: column;
+  gap: 10px;
+  align-self: start;
+  padding-top: 4px;
 }
 
 .luthiers-feature__thumb {
-  width: 130px;
-  height: 175px;
+  width: 80px;
+  height: 108px;
   flex: none;
-  margin-right: 20px;
+  margin: 0;
   border: none;
   padding: 0;
   cursor: pointer;
   background-size: cover;
   background-position: center;
-  filter: grayscale(.5) brightness(.85);
-  opacity: .55;
+  filter: grayscale(.6) brightness(.75);
+  opacity: .5;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
   transition:
     opacity .3s ease,
     filter .3s ease,
     transform .3s ease,
-    width .5s cubic-bezier(.2,.8,.2,1),
-    margin .5s cubic-bezier(.2,.8,.2,1);
+    outline-color .3s ease;
 }
 
+.luthiers-feature__thumb:hover {
+  opacity: .8;
+  transform: scale(1.04);
+  filter: grayscale(.2) brightness(.9);
+}
+
+/* activa: borde naranja + visible */
 .luthiers-feature__thumb.is-active {
-  width: 0;
-  margin-right: 0;
-  opacity: 0;
+  width: 80px;
+  height: 108px;
+  margin: 0;
+  opacity: 1;
+  filter: none;
+  outline-color: #ff5b00;
   pointer-events: none;
+}
+
+/* Info: centrada verticalmente */
+.luthiers-feature__info {
+  align-self: center;
+  padding: clamp(20px, 3vw, 40px) 0;
+}
+
+.luthiers-feature__grid {
+  grid-template-columns: minmax(320px, 1.4fr) 1fr;
+  align-items: start;
 }
 
 .luthiers-feature__thumb:hover {
@@ -2304,6 +2348,7 @@ z-index:1;
   .luthiers-feature__grid {
     grid-template-columns: 1fr;
     gap: 24px;
+    padding: 20px;
   }
 
   .luthiers-feature__thumbs {
@@ -2319,6 +2364,7 @@ z-index:1;
   .luthiers-feature__stage {
     order: 1;
     height: clamp(320px, 70vw, 420px);
+    width: 100%;
   }
 
   .luthiers-feature__info {
@@ -2374,8 +2420,23 @@ z-index:1;
     width: 190px;
     height: 255px;
   }
-}
 
+  .luthiers-feature__name {
+    font-size: 4.2rem;
+  }
+
+  .luthiers-feature__role {
+    font-size: 20px;
+  }
+
+  .luthiers-feature__bio {
+    font-size: 1.4rem;
+  }
+
+  .luthiers-feature__quote {
+    font-size: 1.2rem;
+  }
+}
 
 /* =====================================================
    Preguntas frecuentes
@@ -2690,9 +2751,9 @@ z-index:1;
 }
 
 .cta-final__title em {
-  font-style: italic;
-  color: #ff5b00;
+  color: #ff5e00;
   font-weight: 900;
+  font-style: normal;
 }
 
 /* TEXTO */
@@ -2710,7 +2771,7 @@ z-index:1;
   align-items: center;
   gap: 12px;
   padding: 14px 28px;
-  background: #ff5b00;
+  background: #ff5e00;
   color: #fff;
   text-decoration: none;
   font-size: .88rem;
@@ -2722,7 +2783,7 @@ z-index:1;
 }
 
 .cta-final__btn:hover {
-  background: #e04e00;
+  background: #ff5e00;
   transform: translateY(-3px);
   gap: 18px;
 }

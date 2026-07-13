@@ -630,45 +630,6 @@ body {
 }
 
 /* ============================================================
-   6. INPUTS Y FORMULARIOS
-============================================================ */
-
-.input-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.input-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-60);
-}
-
-.input {
-  width: 100%;
-  padding: 12px 16px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  border: 1.5px solid var(--line-strong);
-  background: var(--white);
-  color: var(--ink);
-  border-radius: var(--radius-sm);
-  outline: none;
-  transition: border-color .25s ease;
-}
-
-.input:focus { border-color: var(--accent); }
-.input::placeholder { color: var(--ink-30); }
-
-.input-dark {
-  background: var(--paper);
-  border-color: var(--line);
-}
-
-/* ============================================================
    7. SEPARADORES Y LÍNEAS
 ============================================================ */
 
@@ -1056,11 +1017,6 @@ body {
           <span class="swatch-label">Accent</span>
           <span class="swatch-hex">#ff5b00</span>
         </div>
-        <div class="swatch-wrap">
-          <div class="swatch" style="background:#e04e00;"></div>
-          <span class="swatch-label">Accent Dark</span>
-          <span class="swatch-hex">#e04e00</span>
-        </div>
       </div>
     </div>
 
@@ -1310,44 +1266,9 @@ body {
     </div>
   </div>
 
-  <!-- 6. FORMULARIOS -->
-  <div class="uikit-section">
-    <div class="uikit-section-label">06 — Inputs</div>
-    <div class="uikit-grid-2">
-      <div class="uikit-col">
-        <div class="input-wrap">
-          <label class="input-label">Nombre</label>
-          <input class="input" type="text" placeholder="Tu nombre completo">
-        </div>
-        <div class="input-wrap">
-          <label class="input-label">Email</label>
-          <input class="input" type="email" placeholder="tu@mail.com">
-        </div>
-        <div class="input-wrap">
-          <label class="input-label">Mensaje</label>
-          <textarea class="input" rows="3" placeholder="Contanos qué sonido estás buscando..." style="resize:vertical;"></textarea>
-        </div>
-        <button class="btn btn-dark" style="align-self:flex-start;">Enviar →</button>
-      </div>
-      <div class="uikit-col">
-        <div style="background:var(--ink); padding:24px; border-radius:var(--radius-md);">
-          <div class="input-wrap">
-            <label class="input-label" style="color:rgba(255,255,255,.45);">Nombre</label>
-            <input class="input" type="text" placeholder="Tu nombre completo" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:white;">
-          </div>
-          <div class="input-wrap" style="margin-top:12px;">
-            <label class="input-label" style="color:rgba(255,255,255,.45);">Email</label>
-            <input class="input" type="email" placeholder="tu@mail.com" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:white;">
-          </div>
-          <button class="btn btn-primary" style="align-self:flex-start;margin-top:16px;">Enviar →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- 7. SEPARADORES -->
   <div class="uikit-section">
-    <div class="uikit-section-label">07 — Separadores y líneas</div>
+    <div class="uikit-section-label">06 — Separadores y líneas</div>
 
     <div class="uikit-col" style="gap:20px;">
       <div>
@@ -1374,7 +1295,7 @@ body {
 
   <!-- 8. NAVEGACIÓN -->
   <div class="uikit-section">
-    <div class="uikit-section-label">08 — Navegación</div>
+    <div class="uikit-section-label">07 — Navegación</div>
     <div class="nav-demo">
       <span class="nav-logo">Trastes</span>
       <nav>
@@ -1391,7 +1312,7 @@ body {
 
   <!-- 9. ICONOGRAFÍA -->
   <div class="uikit-section">
-    <div class="uikit-section-label">09 — Iconografía y flechas</div>
+    <div class="uikit-section-label">08 — Iconografía y flechas</div>
     <div class="uikit-row">
       <button class="icon-demo">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -1417,7 +1338,7 @@ body {
 
   <!-- 10. FILMSTRIP MINI -->
   <div class="uikit-section">
-    <div class="uikit-section-label">10 — Filmstrip / expandible</div>
+    <div class="uikit-section-label">09 — Filmstrip / expandible</div>
     <p class="type-small" style="margin-bottom:14px;">Hover para expandir. Patrón usado en about-course y galería.</p>
     <div class="filmstrip-demo">
       <div class="filmstrip-demo-item is-active">Comienzos</div>
